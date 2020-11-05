@@ -1,0 +1,41 @@
+public class Post extends Actor
+{
+    private int FlipChance = 40;
+    private boolean isFlipped = false;
+    public Post(){
+        GreenfootImage image = getImage();
+        image.scale(125, 200);
+    }
+    public void act() 
+    {       
+    setLocation(getX() - 1, getY());
+        if(getX() <= 1){
+            if (FlipChance > Greenfoot.getRandomNumber(100)) {  
+                if (isFlipped == false) {
+                Flip();
+                setLocation(getX() + 700, 50 );
+            }
+            else {
+                Flip();
+                setLocation(getX() + 700, 350);
+ 
+            }
+        }
+          else {
+            setLocation(getX() + 700, 350 );
+        }
+    }
+}
+
+    public void Flip() {
+        
+         if (isFlipped == true){
+           isFlipped = false; 
+           setRotation(0);
+        }
+        else {
+            isFlipped = true; 
+            setRotation(180);
+        }
+    }
+}
